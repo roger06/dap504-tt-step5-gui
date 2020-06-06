@@ -1,6 +1,8 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * step 4
@@ -16,54 +18,39 @@ public class Main {
 
     /**
      * main method - kicks everything off
+     * creates  Tournament theTournament - the main tournament object
+     * creates TheGUI theGUI  - the main GUI object
      * @param args
      */
     public static void main(String[] args) throws Exception {
 
-        int numberOfPlayers = 8;
+            int numberOfPlayers = 16;
 
+        // set up main objects
         Tournament theTournament = new Tournament(numberOfPlayers); // todo - change input into constructor so user can select no. of players.
 
-        theTournament.displayPlayers();
+        // create the ListArray of player objects
+        theTournament.createPlayerArray(numberOfPlayers);
+
+        // create GUI and pass theTournament object.
+        //todo - is it better to do this another way?
+        TheGUI theGUI = new TheGUI(theTournament);
 
 
-        /**
-         * this is the main controller that loops thru each round
-         * todo - should this be in Tournament class?
-         */
-        for (theTournament.currentRound = 1; theTournament.currentRound <= theTournament.numberOfRounds; theTournament.currentRound++) {
+        // show all the players we have in the tournament.
+//        todo - this is only to be run with the display players button is clicked.
+        theTournament.displayPlayers(theGUI);
 
-            Round currentRound = new Round(theTournament);
-//            currentRound.showInfoInRound();
-            TheGUI theGUI = new TheGUI();
+        // run the tournament
+        // this has the for loop for each round.
 
+        // todo the method below needs to be called when the run button is clicked.
 
-
-
-            JFrame frame = new JFrame("theGUI");
-            frame.setContentPane(theGUI.jPanel);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.pack();
-            frame.setSize(400, 400);
-
-            frame.setVisible(true);
-
-            currentRound.playRound(theGUI);
-
-            theGUI.mainText.append("this is a string.");
-
-
-
-
-        } // end main()
-
-
-
+//        theTournament.runTournamentRounds();
 
 
 
     } // end main()
-
 
 
 

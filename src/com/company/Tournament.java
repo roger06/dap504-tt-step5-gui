@@ -12,9 +12,12 @@ import java.util.Random;
 
 public class Tournament {
 
-    int numberOfRounds;
-    int numberOfPlayers;
-    int currentRound = 1; // first round is always going to be one.
+    /**
+     * the 3 vars below can be static as don't need to belong to objects
+     */
+    static int numberOfRounds;
+    static int numberOfPlayers;
+    static int currentRound = 1; // first round is always going to be one.
     Player playerArray[]; // holds array of players.  //todo remove this
 
     List<Player> playersList = new ArrayList<Player>();
@@ -32,11 +35,15 @@ public class Tournament {
         this.numberOfPlayers = numberOfPlayers;
 
         playerArray = new Player[numberOfPlayers];
-        createPlayerArray(numberOfPlayers);
+//        createPlayerArray(numberOfPlayers);
 
         this.numberOfRounds = calcNumbRounds(this.numberOfPlayers);
 //        System.out.println("rounds = " + this.numberOfRounds);
-    }
+
+    } // end constructor
+
+
+
 
     /**
      * populate List (array )of players
@@ -65,13 +72,19 @@ public class Tournament {
      * displays plays by looping through playerArray
      * // this should not belong in player class as that needs a single player object
      * which we wouldn't want to instantiate to show all of them.
+     * @param theGUI
      */
-    public void displayPlayers() {
+    public void displayPlayers(TheGUI theGUI) {
         System.out.println("displayPlayers");
 
         for (int i = 0; i < this.playersList.size()  ; i++) {
-            System.out.println("Player: " + i + " " + this.playersList.toString());
-            
+            System.out.println("Player: " + i + " "  +  playersList.get(i).firstName   + " " + playersList.get(i).lastName +   "\n");
+
+
+//            theGUI.mainText.append("Player: " + i + " " + this.playersList.toString()+"\n");
+
+            theGUI.mainText.append("Player: " + i + " "  +  playersList.get(i).firstName   + " " + playersList.get(i).lastName +   "\n");
+
         }
 
         
@@ -88,6 +101,24 @@ public class Tournament {
 
     }
 
+
+
+    public static   void runTournamentRounds() {
+        /**
+         * this is the main controller that loops thru each round
+         * todo - should this static? what wuold be the pros and cons
+         * pros won't need to create an object in the theGUI obj
+         * cons - will we be able to access the data we need?
+         */
+        for (currentRound = 1; currentRound <= numberOfRounds; currentRound++) {
+
+//            Round currentRound = new Round(theTournament);
+            Round currentRound = new Round();
+
+            currentRound.showInfoInRound();
+
+        } // end for
+    }
 
 
 

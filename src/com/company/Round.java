@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * when round is over update theTournament.currentRoundNumber
  * Round class receives a Tournament object (theTournament) for its constructor
+ * Object created in Main main()
  */
 
 public class Round {
@@ -24,8 +25,11 @@ public class Round {
 
     }
 
+    public Round() {
 
-//    test method
+    }
+
+    //    test method
     public void showInfoInRound(){
         System.out.println();
         System.out.println("In round we have~: ");
