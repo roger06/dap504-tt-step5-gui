@@ -3,7 +3,14 @@ package com.company;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * class responsible for creating / managing GUI
+ * other classes much do the business logic
+ * this class will display were appropriate.
+ */
 public class TheGUI  {
     public JPanel jPanel;
     private JLabel topLabel;
@@ -14,8 +21,13 @@ public class TheGUI  {
     private JButton exitBtn;
     private JButton displayPlayersBtn;
 
-    public TheGUI(Tournament theTournament) {
+    List<Player> playersList = new ArrayList<Player>();
 
+    Tournament theTournament;   // Tournament object available to the theGUI class
+
+    public TheGUI(int numberOfPlayers) {
+
+        Tournament theTournament = new Tournament(Main.numberOfPlayers);
 
         JFrame frame = new JFrame("theGUI");
         frame.setContentPane(this.jPanel);
@@ -39,8 +51,27 @@ public class TheGUI  {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-//                Tournament.displayPlayers(new TheGUI(theTournament) );
                 System.out.println("display players button clicked");
+
+
+                for (int i = 0; i < theTournament.playersList.size(); i++) {
+
+                    System.out.println("Player: " + i + " "  +  theTournament.playersList.get(i).firstName   + " " + theTournament.playersList.get(i).lastName );
+
+
+//            theGUI.mainText.append("Player: " + i + " " + this.playersList.toString()+"\n");
+
+                mainText.append("Player: " + i + " "  +  theTournament.playersList.get(i).firstName   + " " + theTournament.playersList.get(i).lastName +   "\n");
+
+                }
+
+
+//
+//                mainText.append( "Size = "  + theTournament.playersList.size());
+//                mainText.append(theTournament.playersList.get(0).lastName);
+//                mainText.append("test");
+
+
 
 
             }

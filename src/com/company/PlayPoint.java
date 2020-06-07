@@ -16,7 +16,7 @@ public class PlayPoint {
      * method pairs players together and plays shots etc.
      * gets player objects from  @link Tournament
      *
-     * {@link Tournament#createPlayerArray(int)}
+     * {@link Tournament#createPlayerListArray(int)}
      *
      * <p>we can get the current round from  {@link Tournament#numberOfRounds}</p>
      *

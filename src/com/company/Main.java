@@ -5,11 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * step 4
- * send player objects from each round to a match
- *
- * Match class added
- * Constants Enum class added.
+ * step 5
+ * add GUI
  *
  *
  */
@@ -18,28 +15,31 @@ public class Main {
 
     /**
      * main method - kicks everything off
-     * creates  Tournament theTournament - the main tournament object
-     * creates TheGUI theGUI  - the main GUI object
+     * but doesn't control tournament
+     *
+     * creates TheGUI theGUI  - the main GUI object (which creates  Tournament theTournament - the main tournament object)
+     *
      * @param args
      */
+
+    // todo - change input into constructor so user can select no. of players.
+    static  int numberOfPlayers = 16;
+
     public static void main(String[] args) throws Exception {
 
-            int numberOfPlayers = 16;
-
-        // set up main objects
-        Tournament theTournament = new Tournament(numberOfPlayers); // todo - change input into constructor so user can select no. of players.
 
         // create the ListArray of player objects
-        theTournament.createPlayerArray(numberOfPlayers);
+//        theTournament.createPlayerArray(numberOfPlayers);
 
-        // create GUI and pass theTournament object.
+        // create GUI.
         //todo - is it better to do this another way?
-        TheGUI theGUI = new TheGUI(theTournament);
+        // todo - not sure we even need the var - could just do -  new TheGUI(numberOfPlayers); ??
+        TheGUI theGUI = new TheGUI(numberOfPlayers);
 
 
         // show all the players we have in the tournament.
-//        todo - this is only to be run with the display players button is clicked.
-        theTournament.displayPlayers(theGUI);
+//        todo - this will need to be called from GUI class
+//        theTournament.displayPlayers();
 
         // run the tournament
         // this has the for loop for each round.
