@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Match class executes a match between two playes
  */
-public class Match {
+public class Match  {
 
     Player player1, player2;   // players for each match
 
