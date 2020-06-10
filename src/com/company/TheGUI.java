@@ -20,6 +20,9 @@ public class TheGUI implements ActionListener  {
 
     private JButton exitBtn;
     private JButton displayPlayersBtn;
+    private JProgressBar progressBar;
+    private JButton btnProgress;
+    static int progress = 0;
 
     List<Player> playersList = new ArrayList<Player>();
 
@@ -100,7 +103,28 @@ public class TheGUI implements ActionListener  {
             }
         });
 
+        // progress button is clicked
+        // we want this to trigger the progress bar progressing (just in a loop at first)
+        btnProgress.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
 
+                        progressBar.setValue(progress);
+                        progress = progress + 10;
+//                        for (int i = 0; i <= 100; i) {
+//                            progressBar.setValue(i);
+//
+//                        }
+
+
+                    }
+                });
+
+            }
+        });
     } // end constructor
 
     @Override
