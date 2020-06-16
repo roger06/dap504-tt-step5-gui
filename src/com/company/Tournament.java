@@ -18,7 +18,7 @@ public class Tournament {
     static int numberOfPlayers;
     static int currentRound = 1; // first round is always going to be one.
 
-    List<Player> playersList = new ArrayList<Player>();
+    public List<Player> playersList = new ArrayList<Player>();
 
 
 
